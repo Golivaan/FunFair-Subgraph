@@ -1,0 +1,33 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Token
+    network: mainnet
+    source:
+      address: "0x419D0d8BdD9aF5e606Ae2232ed285Aff190E711b"
+      abi: Token
+      startBlock: 3988945
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Motd
+        - Transfer
+        - Approval
+        - logTokenTransfer
+      abis:
+        - name: Token
+          file: ./abis/Token.json
+      eventHandlers:
+        - event: Motd(string)
+          handler: handleMotd
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: logTokenTransfer(address,address,uint256)
+          handler: handlelogTokenTransfer
+      file: ./src/mapping.ts

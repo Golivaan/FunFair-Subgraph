@@ -1,0 +1,29 @@
+type Motd_ @entity {
+  id: ID!
+  count: BigInt!
+  message: String!
+}
+
+type Transfer_ @entity {
+  id: ID!
+  count: BigInt!
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+}
+
+type Approval_ @entity {
+  id: ID!
+  count: BigInt!
+  owner: Bytes!
+  spender: Bytes!
+  value: BigInt!
+}
+
+type logTokenTransfer_ @entity {
+  id: ID!
+  count: BigInt!
+  token: Bytes!
+  to: Bytes!
+  amount: BigInt!
+}
